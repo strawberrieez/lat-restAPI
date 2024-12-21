@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restapi/get.dart';
+import 'package:restapi/display.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,7 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Get(),
+      darkTheme: ThemeData.dark(),
+      home: Display(),
     );
   }
 }
