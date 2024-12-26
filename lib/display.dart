@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:restapi/create.dart';
 import 'package:restapi/ctrl.dart';
 import 'package:restapi/data.dart';
+import 'package:restapi/update.dart';
 
 class Display extends StatefulWidget {
   const Display({super.key});
@@ -17,9 +19,9 @@ class _DisplayState extends State<Display> {
   }
 
   Future<void> _loadData() async {
-    await getData(); // Panggil fungsi fetchData dari ctrl.dart
+    await getData();
     setState(() {
-      isLoading = false; // Update UI setelah data selesai dimuat
+      isLoading = false;
     });
   }
 
@@ -43,19 +45,48 @@ class _DisplayState extends State<Display> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () async {
+          final result = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const Create()),
+          );
+          if (result == true) {
+            _loadData();
+          }
+        },
+      ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : ListView(
               children: data.map((item) {
+                int index = data.indexOf(item);
                 return Card(
                   child: ListTile(
-                    title: Text(item['title']),
+                    title: Text(item['name']),
                     subtitle: Text('Post ID: ${item['id']}'),
-                    trailing: IconButton(
-                      onPressed: () {
-                        deleteItem(item['id']);
-                      },
-                      icon: const Icon(Icons.delete),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Update(index: index),
+                              ),
+                            );
+                          },
+                          icon: const Icon(Icons.update),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            deleteItem(item['id']);
+                          },
+                          icon: const Icon(Icons.delete),
+                        ),
+                      ],
                     ),
                   ),
                 );
