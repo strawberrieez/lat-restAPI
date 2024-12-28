@@ -2,24 +2,24 @@ GET https://gorest.co.in/public/v2/users
 
 ###
 
-GET https://gorest.co.in/public/v2/users/7601195
+GET https://gorest.co.in/public/v2/users/7603258
 
 ###
 
-POST https://gorest.co.in/public/v2/users HTTP/1.1
+POST https://gorest.co.in/public/v2/users
 Content-Type: application/json
 Authorization: Bearer babc358ca5c037f0693b5bb17e9e8436db1b21a682c2c92ef1ad61f1c4a4819b
 
 {
-  "name": "sekar1",
-  "email": "sekar1@sekar1.com",
+  "name": "sekar test",
+  "email": "sekar@sekar.com",
   "gender": "female",
   "status": "inactive"
 }
 
 ###
 
-PUT https://gorest.co.in/public/v2/users/7600214
+PUT https://gorest.co.in/public/v2/users/7604542
 Content-Type: application/json
 Authorization: Bearer babc358ca5c037f0693b5bb17e9e8436db1b21a682c2c92ef1ad61f1c4a4819b
 
@@ -32,6 +32,6 @@ Authorization: Bearer babc358ca5c037f0693b5bb17e9e8436db1b21a682c2c92ef1ad61f1c4
 
 ###
 
-DELETE https://gorest.co.in/public/v2/users/7600214
+DELETE https://gorest.co.in/public/v2/users/7604542
 Content-Type: application/json
 Authorization: Bearer babc358ca5c037f0693b5bb17e9e8436db1b21a682c2c92ef1ad61f1c4a4819b

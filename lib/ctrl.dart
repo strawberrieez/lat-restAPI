@@ -41,10 +41,12 @@ Future<void> deleteData(int id, Function(bool) onDeleteComplete) async {
     debugPrint('Response status: ${response.statusCode}');
     debugPrint('Response body: ${response.body}');
 
-    if (response.statusCode == 204) {
+    if (response.statusCode == 404) {
+      debugPrint('Response status: ${response.statusCode}');
       onDeleteComplete(true);
     } else {
       onDeleteComplete(false);
+      debugPrint('Response status: ${response.statusCode}');
     }
   } catch (e) {
     debugPrint('Error deleting data: $e');
